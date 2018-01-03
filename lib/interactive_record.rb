@@ -75,5 +75,3 @@ class InteractiveRecord
       DB[:conn].execute(sql)
     end
 end
-#DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{column_name} = #{column_value} LIMIT 1")
-#record = DB[:conn].execute(sql, column_name, column_value)
