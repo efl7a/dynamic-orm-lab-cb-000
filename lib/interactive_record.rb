@@ -66,8 +66,8 @@ class InteractiveRecord
     puts column_name
     puts column_value
     sql = <<-SQL
-      SELECT * FROM #{self.table_name} WHERE #{column_name} = #{column_value} LIMIT 1
+      SELECT * FROM #{self.table_name} WHERE ? = ? LIMIT 1
       SQL
-      DB[:conn].execute(sql)
+      DB[:conn].execute(sql, column_name, column_value)
     end
 end
