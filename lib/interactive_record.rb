@@ -61,8 +61,9 @@ class InteractiveRecord
   end
 
   def self.find_by(attribute)
-    column_name = attribute.keys[0].to_s
+    column_name = "#{attribute.keys[0].to_s}"
     column_value = attribute[attribute.keys[0]]
+
     if column_value.class == String
       column_value = "'#{column_value}'"
     end
