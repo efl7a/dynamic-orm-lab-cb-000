@@ -61,7 +61,7 @@ class InteractiveRecord
   end
 
   def self.find_by(attribute)
-    column_name = "'#{attribute.keys[0].to_s}'"
+    column_name = attribute.keys[0].to_s
     column_value = attribute[attribute.keys[0]]
 
     if column_value.class == String
@@ -70,12 +70,10 @@ class InteractiveRecord
     puts column_name
     puts column_value
     sql = <<-SQL
-      SELECT * FROM #{self.table_name} WHERE ? = ? LIMIT 1
+      SELECT * FROM #{self.table_name} WHERE #{column_name} = #{column_value} LIMIT 1
       SQL
-      record = DB[:conn].execute(sql, column_name, column_value)
-binding.pry
-      record
+      DB[:conn].execute(sql)
     end
 end
-#DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = 'Susan' LIMIT 1")
+#DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{column_name} = #{column_value} LIMIT 1")
 #record = DB[:conn].execute(sql, column_name, column_value)
