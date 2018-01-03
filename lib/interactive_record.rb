@@ -63,6 +63,9 @@ class InteractiveRecord
   def self.find_by(attribute)
     column_name = attribute.keys[0].to_s
     column_value = attribute[attribute.keys[0]]
+    if column_value.string == string
+      column_value = "#{column_value}"
+    end
     puts column_name
     puts column_value
     sql = <<-SQL
