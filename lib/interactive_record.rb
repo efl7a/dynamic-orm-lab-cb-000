@@ -68,7 +68,7 @@ class InteractiveRecord
     sql = <<-SQL
       SELECT * FROM #{self.table_name} WHERE ? = ? LIMIT 1
       SQL
-      DB[:conn].execute(sql, column_name, column_value)
+      record = DB[:conn].execute(sql, column_name, column_value)
       binding.pry
     end
 end
